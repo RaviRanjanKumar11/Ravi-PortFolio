@@ -117,10 +117,10 @@ const openModal = (image: string) => {
             className="relative"
             onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
           >
-          <Image
+         <Image 
   width={500}
   height={500}
-  src={selectedImage}
+  src={selectedImage ?? "/fallback-image.jpg"} 
   alt="Preview"
   className="w-auto h-auto max-w-full max-h-[70vh] md:max-h-[80vh] rounded-xl object-contain"
 />
