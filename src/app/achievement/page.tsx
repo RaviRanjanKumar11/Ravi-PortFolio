@@ -84,7 +84,7 @@ const Achievements: React.FC = () => {
           <div className="bg-white p-1 rounded-lg shadow-lg flex flex-col items-center relative">
             {/* Like Counter */}
             <div className="absolute top-2 right-2 flex items-center bg-gray-900 text-white px-3 py-1 rounded-full">
-              <FaHeart className="text-red-500 mr-1" />
+              <FaHeart className="text-red-500 mr-1 animate-pulse" />
               <span>{likes}</span>
             </div>
 
@@ -98,38 +98,38 @@ const Achievements: React.FC = () => {
                 className="object-cover rounded-lg shadow-md"
               />
             </div>
-            <div className="flex space-x-4 mt-3">
+            <div className="flex mt-3 gap-1">
               {/* Like Button */}
               <button
                 onClick={handleLike}
-                className="flex items-center bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition duration-300"
+                className="flex items-center bg-red-500 text-white px-1 py-0 rounded-lg hover:bg-red-600 transition duration-300"
               >
-                <FaHeart className="mr-2" /> Like
+                <FaHeart className="mr-1" /> Like
               </button>
 
               {/* Download Resume Button */}
               <a
                 href="/assets/img/ResumeRavi.png"
                 download="ResumeRavi.png"
-                className="flex items-center bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition duration-300"
+                className="flex items-center bg-blue-500 text-white px-1 py-0 rounded-lg hover:bg-blue-600 transition duration-300"
               >
-                <FaDownload className="mr-2" /> Download
+                <FaDownload className="mr-1" /> Download
               </a>
 
               {/* Print Resume Button */}
               <button
                 onClick={handlePrint}
-                className="flex items-center bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-300"
+                className="flex items-center bg-green-500 text-white px-1 py-0 rounded-lg hover:bg-green-600 transition duration-300"
               >
-                <FaPrint className="mr-2" /> Print
+                <FaPrint className="mr-1" /> Print
               </button>
 
               {/* Share Button */}
               <button
                 onClick={handleShare}
-                className="flex items-center bg-gray-700 text-white px-3 py-1 rounded-lg hover:bg-gray-800 transition duration-300"
+                className="flex items-center bg-gray-700 text-white px-1 py-0 rounded-lg hover:bg-gray-800 transition duration-300"
               >
-                <FaShareAlt className="mr-2" /> Share
+                <FaShareAlt className="mr-1" /> Share
               </button>
             </div>
           </div>

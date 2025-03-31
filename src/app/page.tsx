@@ -7,6 +7,8 @@ import AboutPage from "./about/page";
 import Achievements from "./achievement/page";
 import ProjectsPage from "./projects/page";
 import Skills from "./skills/page";
+import AIChatbot from "../components/AIChatbot";
+import ModelViewer from "../components/ModelViewer";
 
 export default function HomePage() {
   return (
@@ -17,7 +19,13 @@ export default function HomePage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
+        <AIChatbot />
+    
         <Hero />
+       
+      
+      <ModelViewer />
+
       </motion.div>
 
       {/* About Section (Fades in from the left) */}

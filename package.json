@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.0.4",
+    "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.20",

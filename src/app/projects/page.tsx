@@ -42,7 +42,7 @@ const ProjectsPage: React.FC = () => {
     </div>
 
     {/* Filters */}
-    <div className="flex justify-center md:space-x-6 space-x-1 mb-4">
+    <div className="flex justify-center md:space-x-5 space-x-1 mb-4">
       {["Hospital", "ApiGroup", "ApiUserAdmin", "HotelBooking"].map((category) => (
         <button
           key={category}
