@@ -4,22 +4,7 @@ import { HospitalItems, ApiGroup, ApiUserAdminItems, HotelItems } from "../../ut
 import Image from "next/image";
 
 const ProjectsPage: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("Hospital");
-
-
-
-//console.log(HospitalItems);
-const openModal = (image: string) => {
-  setSelectedImage(image);
-  setIsModalOpen(true);
-};
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedImage(null);
-  };
 
 
   // Function to handle button click and filter items
@@ -77,7 +62,7 @@ const openModal = (image: string) => {
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8" >
         {getFilteredItems(selectedCategory).map((item,index) => (
           <div
-          onClick={() => openModal(item.image)} 
+         
             key={item.id || index}
             className="group relative overflow-hidden h-72 w-full bg-sky-300 rounded-xl shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:scale-105"
           >
@@ -91,7 +76,7 @@ const openModal = (image: string) => {
               </p>
               <button
                 className="bg-gray-50 px-3 py-2 rounded-xl hover:bg-sky-600 text-gray-800 hover:text-white transition-all"
-                onClick={() => openModal(item.image)}
+               
               >
                 {item.detailsLink}
               </button>
@@ -106,34 +91,7 @@ const openModal = (image: string) => {
           </div>
         ))}
       </div>
-
-      {/* Modal for Fullscreen Image */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 h-auto"
-          onClick={closeModal}
-        >
-          <div
-            className="relative"
-            onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
-          >
-         <Image 
-  width={500}
-  height={500}
-  src={selectedImage ?? "/fallback-image.jpg"} 
-  alt="Preview"
-  className="w-auto h-auto max-w-full max-h-[70vh] md:max-h-[80vh] rounded-xl object-contain"
-/>
-
-            <button
-              className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full"
-              onClick={closeModal}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+     
     </div>
 </section>
 
