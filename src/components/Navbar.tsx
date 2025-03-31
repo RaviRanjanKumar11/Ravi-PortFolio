@@ -1,16 +1,26 @@
 'use client';
 
 import { useState } from "react";
+import { usePathname } from "next/navigation"; 
 import Link from "next/link";
 import { TbMenuOrder } from "react-icons/tb";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // Get the current route
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);  
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Skills", path: "/skills" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
-    <nav className=" font-mono bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 shadow-lg sticky top-0 z-50">
+    <nav className="font-mono bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 shadow-lg sticky top-0 z-50">
       {/* Desktop Navbar */}
       <div className="container mx-auto flex justify-between items-center md:py-4 md:px-6 p-1">
         {/* Logo Section */}
@@ -20,36 +30,24 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-6 text-lg">
-          <Link href="/" legacyBehavior>
-            <a className="text-white hover:text-yellow-300 transition-colors duration-300">
-              Home
-            </a>
-          </Link>
-          <Link href="/about" legacyBehavior>
-            <a className="text-white hover:text-yellow-300 transition-colors duration-300">
-              About
-            </a>
-          </Link>
-          <Link href="/projects" legacyBehavior>
-            <a className="text-white hover:text-yellow-300 transition-colors duration-300">
-              Projects
-            </a>
-          </Link>
-          <Link href="/skills" legacyBehavior>
-            <a className="text-white hover:text-yellow-300 transition-colors duration-300">
-              Skills
-            </a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a className="text-white hover:text-yellow-300 transition-colors duration-300">
-              Contact
-            </a>
-          </Link>
+          {navLinks.map((link) => (
+            <Link key={link.path} href={link.path} legacyBehavior>
+              <a
+                className={`transition-colors duration-300 ${
+                  pathname === link.path
+                    ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+                    : "text-white hover:text-yellow-300"
+                }`}
+              >
+                {link.name}
+              </a>
+            </Link>
+          ))}
         </div>
 
         {/* Call-to-Action Button */}
         <Link href="/contact" legacyBehavior>
-          <a className="bg-yellow-300 text-gray-900 font-semibold md:py-2 md:px-4 px-1 rounded-lg shadow-md text:xs hover:bg-yellow-400 transition-transform transform hover:scale-105">
+          <a className="bg-yellow-300 text-gray-900 font-semibold md:py-2 md:px-4 px-1 rounded-lg shadow-md text-xs hover:bg-yellow-400 transition-transform transform hover:scale-105">
             Hire Me
           </a>
         </Link>
@@ -57,7 +55,7 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMobileMenu} className="text-white">
-          <TbMenuOrder />
+            <TbMenuOrder />
           </button>
         </div>
       </div>
@@ -69,21 +67,19 @@ export default function Navbar() {
             <button onClick={toggleMobileMenu} className="text-white text-3xl self-end">
               &times;
             </button>
-            <Link href="/" legacyBehavior>
-              <a className="text-white text-xl hover:text-yellow-300 transition-colors duration-300">Home</a>
-            </Link>
-            <Link href="/about" legacyBehavior>
-              <a className="text-white text-xl hover:text-yellow-300 transition-colors duration-300">About</a>
-            </Link>
-            <Link href="/projects" legacyBehavior>
-              <a className="text-white text-xl hover:text-yellow-300 transition-colors duration-300">Projects</a>
-            </Link>
-            <Link href="/skills" legacyBehavior>
-            <a className="text-white text-xl hover:text-yellow-300 transition-colors duration-300">Skills</a>
-          </Link>
-            <Link href="/contact" legacyBehavior>
-              <a className="text-white text-xl hover:text-yellow-300 transition-colors duration-300">Contact</a>
-            </Link>
+            {navLinks.map((link) => (
+              <Link key={link.path} href={link.path} legacyBehavior>
+                <a
+                  className={`text-xl transition-colors duration-300 ${
+                    pathname === link.path
+                      ? "text-yellow-300 font-bold border-l-4 border-yellow-300 pl-2"
+                      : "text-white hover:text-yellow-300"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </Link>
+            ))}
             <Link href="/contact" legacyBehavior>
               <a className="bg-yellow-300 text-gray-900 font-semibold px-4 py-2 rounded-lg shadow-md text-xl hover:bg-yellow-400 transition-transform transform hover:scale-105">
                 Hire Me

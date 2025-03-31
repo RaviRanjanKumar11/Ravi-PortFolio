@@ -1,4 +1,6 @@
 import Image from "next/image";
+import AnimatedName from "./AnimatedName";
+
 
 export default function Hero() {
   return (
@@ -25,9 +27,10 @@ export default function Hero() {
         data-aos="fade-up"
         data-aos-delay="100"
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-wide mb-6 animate-fadeInUp">
+        {/* <h1 className="text-5xl md:text-6xl font-extrabold tracking-wide mb-6 animate-fadeInUp">
           Ravi Ranjan Kumar
-        </h1>
+        </h1> */}
+        <AnimatedName />
         <p className="text-lg md:text-2xl mb-4">
           <span
             className="text-yellow-400 font-semibold tracking-wider animate-smoke text-xl"
