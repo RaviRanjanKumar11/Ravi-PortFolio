@@ -10,16 +10,16 @@ export default function Skills() {
       skillBars.forEach((bar) => {
         const rect = bar.getBoundingClientRect();
         if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          bar.style.width = bar.getAttribute("aria-valuenow") + "%";
+          (bar as HTMLElement).style.width = bar.getAttribute("aria-valuenow") + "%";
         }
       });
     };
+
     window.addEventListener("scroll", onScroll);
     onScroll(); // Initialize scroll position on load
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
   return (
     <section id="skills" className="skills font-mono section bg-gray-50 md:py-6 py-2 px-4">
       {/* Section Title */}
@@ -33,33 +33,34 @@ export default function Skills() {
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:p-3 p-1">
         <div>
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              HTML <i className="val text-yellow-500">90%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-green-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="90"
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
+        <div className="progress mb-6">
+  <span className="skill text-lg font-semibold text-gray-700">
+    HTML <i className="val text-yellow-500">90%</i>
+  </span>
+  <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
+    <div
+      className="progress-bar bg-green-500 h-2 rounded-full"
+      role="progressbar"
+      aria-valuenow={90}
+      aria-valuemin={0}  
+      aria-valuemax={100}
+      style={{ width: "0%" }}
+    ></div>
+  </div>
+</div>
+
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
-              CSS <i className="val text-yellow-500">90%</i>
+              CSS <i className="val text-yellow-500">60%</i>
             </span>
             <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
               <div
                 className="progress-bar bg-blue-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={60}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -74,18 +75,15 @@ export default function Skills() {
               <div
                 className="progress-bar bg-blue-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+              aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
           </div>
 
-              
-
-
-
+            
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
@@ -95,9 +93,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-yellow-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="85"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={85}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -111,9 +109,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-teal-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="100"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={100}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -127,9 +125,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-purple-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="100"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={100}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -143,9 +141,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-red-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="65"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={65}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -153,15 +151,15 @@ export default function Skills() {
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
-            C, Java , Python <i className="val text-yellow-500">60%</i>
+            C, Java , Python <i className="val text-yellow-500">70%</i>
             </span>
             <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
               <div
                 className="progress-bar bg-red-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="60"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -180,9 +178,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-indigo-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -190,15 +188,15 @@ export default function Skills() {
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
-              ReactJS <i className="val text-yellow-500">90%</i>
+              ReactJS <i className="val text-yellow-500">95%</i>
             </span>
             <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
               <div
                 className="progress-bar bg-blue-600 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={95}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -206,15 +204,15 @@ export default function Skills() {
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
-              TypeScript <i className="val text-yellow-500">60%</i>
+              TypeScript <i className="val text-yellow-500">80%</i>
             </span>
             <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
               <div
                 className="progress-bar bg-orange-500 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="60"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={80}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -222,15 +220,15 @@ export default function Skills() {
 
           <div className="progress mb-6">
             <span className="skill text-lg font-semibold text-gray-700">
-              NodeJS <i className="val text-yellow-500">60%</i>
+              NodeJS <i className="val text-yellow-500">70%</i>
             </span>
             <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
               <div
                 className="progress-bar bg-gray-400 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="60"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -244,9 +242,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-green-600 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={90}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -260,9 +258,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-teal-600 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -277,9 +275,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-teal-600 h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
@@ -294,9 +292,9 @@ export default function Skills() {
               <div
                 className="progress-bar bg-black h-2 rounded-full"
                 role="progressbar"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={70}
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={{ width: "0%" }}
               ></div>
             </div>
