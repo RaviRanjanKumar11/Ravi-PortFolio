@@ -3,7 +3,7 @@ import { about } from "../app/types/project"
 export const About: about[] = [
      {
         id: 1,
-        profile: "assets/img/ravifull.jpg",
+        profile: "/assets/img/ravifull.jpg",
         post: "Software Developer (SDE)",
         nameDetails: "Ravi Ranjan Kumar is a full-stack developer skilled in Java, PHP, React.js, and Laravel, with experience in web development, project management, and AI-driven applications. Passionate about new technologies.",
         bday: "10-08-2000",

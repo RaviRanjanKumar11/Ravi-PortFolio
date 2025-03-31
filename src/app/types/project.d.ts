@@ -3,7 +3,7 @@ export interface project {
   category: string;
   title: string;
   description: string | number;
-  image: string | any;
+  image: string;
   detailsLink: string;
 }
 

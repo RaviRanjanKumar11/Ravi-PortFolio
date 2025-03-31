@@ -7,7 +7,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Hospital Management",
     description: "Hospital Login",
-    image: "assets/img/10.png",
+    image: "/assets/img/10.png",
     detailsLink: "Link",
   },
   {
@@ -15,7 +15,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Patient Registration",
     description: "New Patient Registration",
-    image: "assets/img/7.png",
+    image: "/assets/img/7.png",
     detailsLink: "Link",
   },
   {
@@ -23,7 +23,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Patient List",
     description: "All Patient List",
-    image: "assets/img/9.png",
+    image: "/assets/img/9.png",
     detailsLink: "Link",
   },
   {
@@ -31,7 +31,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Medicine",
     description: "List of All Medicine  ",
-    image: "assets/img/8.png",
+    image: "/assets/img/8.png",
     detailsLink: "Link",
   },
   {
@@ -39,7 +39,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "X-Ray",
     description: "Patient x-ray reports ",
-    image: "assets/img/6.png",
+    image: "/assets/img/6.png",
     detailsLink: "Link",
   },
   {
@@ -47,7 +47,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Payment",
     description: "Payment Pannel",
-    image: "assets/img/5.png",
+    image: "/assets/img/5.png",
     detailsLink: "Link",
   },
   {
@@ -55,7 +55,7 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Patient By Serial No.",
     description: "Find By SerialNo.  ",
-    image: "assets/img/4.png",
+    image: "/assets/img/4.png",
     detailsLink: "Link",
   },
   {
@@ -63,17 +63,9 @@ export const HospitalItems: project[] = [
     category: "hospital",
     title: "Loan Application.",
     description: "Apply Loan App",
-    image: "assets/img/3.png",
+    image: "/assets/img/3.png",
     detailsLink: "Link",
-  },
-  // {
-  //   id: 9,
-  //   category: "Product",
-  //   title: "Dashboard",
-  //   description: "Hospital Dashboard",
-  //   image: "assets/img/2.png",
-  //   detailsLink: "Link",
-  // },
+  }
 ];
 
 export const ApiGroup: project[] = [
@@ -82,7 +74,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "Threejs 3D",
     description: "Planets",
-    image: "assets/img/three1.png",
+    image: "/assets/img/three1.png",
     detailsLink: "https://solar-system-threejs-one.vercel.app/",
   },
   {
@@ -90,7 +82,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "Around The World",
     description: "Earth",
-    image: "assets/img/threeimg.png",
+    image: "/assets/img/threeimg.png",
     detailsLink: "https://solar-system-threejs-one.vercel.app/",
   },
   {
@@ -98,7 +90,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "Threejs 3D",
     description: "Water ",
-    image: "assets/img/threeimg2.png",
+    image: "/assets/img/threeimg2.png",
     detailsLink: "https://solar-system-threejs-one.vercel.app/",
   },
   {
@@ -106,7 +98,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "ChatBot",
     description: "Gemini Chatbot  ",
-    image: "assets/img/chat.png",
+    image: "/assets/img/chat.png",
     detailsLink: "Link",
   },
   {
@@ -114,7 +106,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "Test CDN",
     description: "CDN",
-    image: "assets/img/mycdn.png",
+    image: "/assets/img/mycdn.png",
     detailsLink: "Link",
   },
   {
@@ -122,7 +114,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "Google Dev",
     description: "Search Engine",
-    image: "assets/img/google.png",
+    image: "/assets/img/google.png",
     detailsLink: "Link",
   },
   {
@@ -130,7 +122,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "TikTokToe",
     description: "ReactJsTikTokToe",
-    image: "assets/img/tiktok.png",
+    image: "/assets/img/tiktok.png",
     detailsLink: "Link",
   },
   {
@@ -138,7 +130,7 @@ export const ApiGroup: project[] = [
     category: "Apis",
     title: "My CDN.",
     description: "Css,Js,CDN",
-    image: "assets/img/testcdn.png",
+    image: "/assets/img/testcdn.png",
     detailsLink: "Link",
   },
 ];
@@ -149,7 +141,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api Admin",  
     description: "Admin Dashbord",
-    image: "assets/img/admindash.png",
+    image: "/assets/img/admindash.png",
     detailsLink: "Link",
   },
   {
@@ -157,7 +149,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api Admin",
     description: "Admin Fund Approve",
-    image: "assets/img/adminFApprove.png",
+    image: "/assets/img/adminFApprove.png",
     detailsLink: "Link",
   },
   {
@@ -165,7 +157,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api Admin",
     description: "Adnin Pin & Ipaddress",
-    image: "assets/img/adminPin.png",
+    image: "/assets/img/adminPin.png",
     detailsLink: "Link",
   },
   {
@@ -173,7 +165,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User Dashboard",
-    image: "assets/img/userdashprofile.png",
+    image: "/assets/img/userdashprofile.png",
     detailsLink: "Link",
   },
   {
@@ -181,7 +173,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "Digital KYC ",
-    image: "assets/img/digitalKYC.png",
+    image: "/assets/img/digitalKYC.png",
     detailsLink: "Link",
   },
   {
@@ -189,7 +181,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User HelpDesk",
-    image: "assets/img/userHelpDesk.png",
+    image: "/assets/img/userHelpDesk.png",
     detailsLink: "Link",
   },
   {
@@ -197,7 +189,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User Mobile View",
-    image: "assets/img/userMobDash.png",
+    image: "/assets/img/userMobDash.png",
     detailsLink: "Link",
   },
   {
@@ -205,7 +197,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User Test Aadhar",
-    image: "assets/img/userTestAadhar.png",
+    image: "/assets/img/userTestAadhar.png",
     detailsLink: "Link",
   },
   {
@@ -213,7 +205,7 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User Test Pan",
-    image: "assets/img/userTestPan.png",
+    image: "/assets/img/userTestPan.png",
     detailsLink: "Link",
   },
   {
@@ -221,23 +213,23 @@ export const ApiUserAdminItems: project[] = [
     category: "Api",
     title: "Api User",
     description: "User Test Crif",
-    image: "assets/img/userHighmarkscore.png",
+    image: "/assets/img/userHighmarkscore.png",
     detailsLink: "Link",
   },
   {
-    id: 10,
+    id: 11,
     category: "Api",
     title: "Api User",
     description: "User Test Equifax",
-    image: "assets/img/userEquifaxScore.png",
+    image: "/assets/img/userEquifaxScore.png",
     detailsLink: "Link",
   },
   {
-    id: 10,
+    id: 12,
     category: "Api",
     title: "Api User",
     description: "User Lock Screen",
-    image: "assets/img/userLock.png",
+    image: "/assets/img/userLock.png",
     detailsLink: "Link",
   },
 ];
@@ -248,7 +240,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Register",
     description: "User Register",
-    image: "assets/img/Yad7.png",
+    image: "/assets/img/Yad7.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -256,7 +248,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Login",
     description: "Customer Login",
-    image: "assets/img/Yad6.png",
+    image: "/assets/img/Yad6.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -264,7 +256,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Hotal List",
     description: "All Hotal",
-    image: "assets/img/Yad5.png",
+    image: "/assets/img/Yad5.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -272,7 +264,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Event List",
     description: "Event List",
-    image: "assets/img/Yad4.png",
+    image: "/assets/img/Yad4.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -280,7 +272,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Theme Explore",
     description: "Theme Explore ",
-    image: "assets/img/Yad3.png",
+    image: "/assets/img/Yad3.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -288,7 +280,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Nearby Hotel",
     description: "Nearby Hotel",
-    image: "assets/img/Yad2.png",
+    image: "/assets/img/Yad2.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -296,7 +288,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Search A/q Hotel",
     description: "Search Hotel.",
-    image: "assets/img/Yad1.png",
+    image: "/assets/img/Yad1.png",
     detailsLink: "https://www.yaadgarpal.com/",
   },
   {
@@ -304,7 +296,7 @@ export const HotelItems: project[] = [
     category: "Hotel",
     title: "Mobile View",
     description: "Hotel Login",
-    image: "assets/img/Yad8.png",
+    image: "/assets/img/Yad8.png",
     detailsLink: "https://www.yaadgarpal.com/",
   }
 ];      

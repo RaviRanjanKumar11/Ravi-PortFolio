@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Text, Plane } from "@react-three/drei";
+import { OrbitControls, useGLTF, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { Water } from "three/examples/jsm/objects/Water.js";
 

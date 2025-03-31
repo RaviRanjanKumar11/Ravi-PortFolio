@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { HospitalItems, ApiGroup, ApiUserAdminItems, HotelItems } from "../../utils/data";
+import Image from "next/image";
 
 const ProjectsPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -95,7 +96,9 @@ const ProjectsPage: React.FC = () => {
                 {item.detailsLink}
               </button>
             </div>
-            <img
+              <Image
+                          width={500}
+                          height={500}
               src={item.image}
               alt={item.title}
               className="w-full h-72 object-cover group-hover:scale-105 transition-all duration-500"

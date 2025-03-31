@@ -1,5 +1,6 @@
 
 import { About } from "../../utils/about";
+import Image from "next/image";
 
 const AboutPage: React.FC = () => {
   return (
@@ -24,12 +25,15 @@ const AboutPage: React.FC = () => {
 
       {About?.map((item, index) => (
         <div
+          key={index}
           className="container mx-auto mb-16"
           data-aos="fade-up"
           data-aos-delay={`${index * 100}`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 font-mono items-center">
-            <img
+            <Image
+              width={500}
+              height={500}
               src={item.profile}
               className="img-fluid rounded-lg shadow-xl w-full md:w-[60%] transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
               alt="Ravi Ranjan Kumar"

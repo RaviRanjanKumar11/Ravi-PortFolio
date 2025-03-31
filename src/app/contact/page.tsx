@@ -14,6 +14,7 @@ export default function ContactForm() {
     setTimeout(() => {
       setIsLoading(false);
       setIsMessageSent(true);
+      setErrorMessage("");
       // Reset the form or handle any errors here
     }, 2000);
   };

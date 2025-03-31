@@ -1,4 +1,4 @@
-import {Typed} from "react-typed";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -6,13 +6,16 @@ export default function Hero() {
       id="hero"
       className="relative font-mono h-screen flex items-center justify-center bg-black text-white overflow-hidden"
     >
-      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/img/hero-bg.jpg"
-          alt="Hero Background"
-          className="w-full h-full object-cover"
-        />
+      <Image
+  width={500}
+  height={500}
+  src="/assets/img/hero-bg.jpg"
+  alt="Hero Background"
+  className="w-full h-full object-cover"
+/>
+
+
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70"></div>
       </div>
 
@@ -26,15 +29,11 @@ export default function Hero() {
           Ravi Ranjan Kumar
         </h1>
         <p className="text-lg md:text-2xl mb-4">
-          I'm{" "}
           <span
             className="text-yellow-400 font-semibold tracking-wider animate-smoke text-xl"
             data-typed-items="Full Stack Java Developer, SDE, Freelancer, MERN Stack Developer"
           >
-            Software Developer,
-            MERN Stack,
-            Freelancer,
-            Mentor
+            Software Developer, MERN Stack, Freelancer, Mentor
           </span>
         </p>
         <button
