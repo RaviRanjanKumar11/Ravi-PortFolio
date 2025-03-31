@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMessageSent, setIsMessageSent] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +13,6 @@ export default function ContactForm() {
     setTimeout(() => {
       setIsLoading(false);
       setIsMessageSent(true);
-      setErrorMessage("");
       // Reset the form or handle any errors here
     }, 2000);
   };
@@ -118,7 +116,6 @@ export default function ContactForm() {
               {/* Form Status */}
               <div className="text-center space-y-4">
                 {isLoading && <div className="loading text-white">Loading...</div>}
-                {errorMessage && <div className="error-message text-red-500">{errorMessage}</div>}
                 {isMessageSent && (
                   <div className="sent-message text-green-500">Your message has been sent. Thank you!</div>
                 )}

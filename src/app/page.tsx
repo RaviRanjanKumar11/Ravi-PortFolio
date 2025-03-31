@@ -1,6 +1,5 @@
 import ContactForm from "../components/ContactForm";
 import Hero from "../components/Hero";
-import Scene from "../components/Scene";
 import AboutPage from "./about/page";
 import Achievements from "./achievement/page";
 import ProjectsPage from "./projects/page";
@@ -17,7 +16,6 @@ export default function HomePage() {
       <ProjectsPage />
       <Achievements />
       <ContactForm />
-      <Scene />
     </div>
   );
 }

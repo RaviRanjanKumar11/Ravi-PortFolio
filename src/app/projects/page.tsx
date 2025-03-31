@@ -11,10 +11,10 @@ const ProjectsPage: React.FC = () => {
 
 
 //console.log(HospitalItems);
-  const openModal = (image) => {
-    setSelectedImage(image);
-    setIsModalOpen(true);
-  };
+const openModal = (image: string) => {
+  setSelectedImage(image);
+  setIsModalOpen(true);
+};
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -117,7 +117,9 @@ const ProjectsPage: React.FC = () => {
             className="relative"
             onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
           >
-          <img
+          <Image
+  width={500}
+  height={500}
   src={selectedImage}
   alt="Preview"
   className="w-auto h-auto max-w-full max-h-[70vh] md:max-h-[80vh] rounded-xl object-contain"
