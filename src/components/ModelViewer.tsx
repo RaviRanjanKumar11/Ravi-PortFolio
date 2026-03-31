@@ -47,7 +47,7 @@ export default function ModelViewer() {
           <Canvas camera={{ position: [0, 1, 3], fov: 40 }} className="w-full h-full">
             {/* Lighting */}
             <ambientLight intensity={1} />
-            <directionalLight position={[2, 2, 5]} intensity={1.5} />
+            <directionalLight position={[2, 2, 5]} intensity={1.5} /> 
 
             {/* 3D Model */}
             <AnimatedModel />

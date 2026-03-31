@@ -9,7 +9,7 @@ export default function ContactForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate sending a message (you should integrate actual backend logic here)
+ 
     setTimeout(() => {
       setIsLoading(false);
       setIsMessageSent(true);

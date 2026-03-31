@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
         <div>
           <p className="text-sm text-gray-400">
-            Built with <span className="text-red-500">❤️</span> using Nextjs , TypeScript and Tailwind CSS.
+            Built with <span className="text-red-500"></span> using Nextjs , TypeScript and Tailwind CSS.
           </p>
         </div>
       </div>
