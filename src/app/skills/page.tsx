@@ -1,305 +1,98 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const skillData = [
+  { name: "ReactJS", level: 95, color: "bg-blue-500" },
+  { name: "MySQL", level: 90, color: "bg-green-600" },
+  { name: "JavaScript", level: 85, color: "bg-yellow-500" },
+  { name: "TypeScript", level: 80, color: "bg-orange-500" },
+  { name: "Tailwind CSS", level: 100, color: "bg-teal-500" },
+  { name: "NextJS", level: 70, color: "bg-indigo-500" },
+  { name: "Three.js", level: 70, color: "bg-purple-500" },
+  { name: "NodeJS", level: 70, color: "bg-gray-500" },
+  { name: "MongoDB", level: 70, color: "bg-emerald-600" },
+  { name: "Laravel", level: 65, color: "bg-red-500" },
+];
 
 export default function Skills() {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    // Animation when the component is in view
-    const skillBars = document.querySelectorAll(".progress-bar");
-    const onScroll = () => {
-      skillBars.forEach((bar) => {
-        const rect = bar.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-          (bar as HTMLElement).style.width = bar.getAttribute("aria-valuenow") + "%";
-        }
-      });
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.1 }
+    );
 
-    window.addEventListener("scroll", onScroll);
-    onScroll(); // Initialize scroll position on load
+    const section = document.getElementById("skills");
+    if (section) observer.observe(section);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => observer.disconnect();
   }, []);
+
   return (
-    <section id="skills" className="skills font-mono section bg-gray-50 md:py-6 py-2 px-4">
-      {/* Section Title */}
-      <div className="container mx-auto text-center mb-4">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Skills</h2>
-        <p className="text-xl text-gray-600">
-          MERN Stack, ReactJS, NextJS, Redux, TypeScript, Laravel, TailwindCSS, Bootstrap, Git
-        </p>
-      </div>
-      {/* End Section Title */}
-
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:p-3 p-1">
-        <div>
-        <div className="progress mb-6">
-  <span className="skill text-lg font-semibold text-gray-700">
-    HTML <i className="val text-yellow-500">90%</i>
-  </span>
-  <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-    <div
-      className="progress-bar bg-green-500 h-2 rounded-full"
-      role="progressbar"
-      aria-valuenow={90}
-      aria-valuemin={0}  
-      aria-valuemax={100}
-      style={{ width: "0%" }}
-    ></div>
-  </div>
-</div>
-
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              CSS <i className="val text-yellow-500">60%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-blue-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={60}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              Three.js <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-blue-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-              aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-            
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              JavaScript <i className="val text-yellow-500">85%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-yellow-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={85}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              Tailwind CSS <i className="val text-yellow-500">100%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-teal-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={100}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              Bootstrap <i className="val text-yellow-500">100%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-purple-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={100}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              Laravel <i className="val text-yellow-500">65%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-red-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={65}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-            C, Java , Python <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-red-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
+    <section id="skills" className="py-24 bg-white font-sans overflow-hidden">
+      <div className="container mx-auto px-6">
         
+        {/* Section Title */}
+        <div className="text-center mb-20" data-aos="fade-up">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+            Technical <span className="text-blue-600">Expertise</span>
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
+            A comprehensive set of tools and technologies I use to bring digital ideas to life.
+          </p>
         </div>
 
-        <div>
-         
-        <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              NextJS <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-indigo-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+          {skillData.map((skill, index) => (
+            <div 
+              key={index} 
+              className="group"
+              data-aos="fade-up" 
+              data-aos-delay={index * 50}
+            >
+              <div className="flex justify-between items-end mb-3">
+                <div className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full ${skill.color} animate-pulse`}></div>
+                  <span className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+                    {skill.name}
+                  </span>
+                </div>
+                <span className="text-sm font-mono font-bold text-slate-400">
+                  {isVisible ? skill.level : 0}%
+                </span>
+              </div>
+
+              <div className="relative h-3 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-50 shadow-inner">
+                {/* Background Glow Effect */}
+                <div 
+                  className={`absolute top-0 left-0 h-full ${skill.color} opacity-20 blur-sm transition-all duration-1000 ease-out`}
+                  style={{ width: isVisible ? `${skill.level}%` : "0%" }}
+                ></div>
+                
+                {/* Main Progress Bar */}
+                <div 
+                  className={`absolute top-0 left-0 h-full ${skill.color} rounded-full transition-all duration-1000 ease-out shadow-lg`}
+                  style={{ width: isVisible ? `${skill.level}%` : "0%" }}
+                >
+                  {/* Subtle Stripe Pattern */}
+                  <div className="w-full h-full opacity-10 bg-[linear-gradient(45deg,rgba(255,255,255,.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,.2)_50%,rgba(255,255,255,.2)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem]"></div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              ReactJS <i className="val text-yellow-500">95%</i>
+        {/* Footer Skill Cloud (Optional) */}
+        <div className="mt-20 flex flex-wrap justify-center gap-4 opacity-50">
+          {["Express.js", "Axios", "WebSocket", "Bootstrap", "Git", "Python", "Java"].map((s) => (
+            <span key={s} className="px-4 py-1 bg-slate-100 rounded-full text-sm font-medium text-slate-600 border border-slate-200">
+              {s}
             </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-blue-600 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={95}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              TypeScript <i className="val text-yellow-500">80%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-orange-500 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={80}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              NodeJS <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-gray-400 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              MySQL <i className="val text-yellow-500">90%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-green-600 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={90}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-         
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-              MongoDB <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-teal-600 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-            Axios, WebSocket <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-teal-600 h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
-
-          <div className="progress mb-6">
-            <span className="skill text-lg font-semibold text-gray-700">
-            Express.js <i className="val text-yellow-500">70%</i>
-            </span>
-            <div className="progress-bar-wrap bg-gray-200 h-2 rounded-full">
-              <div
-                className="progress-bar bg-black h-2 rounded-full"
-                role="progressbar"
-                aria-valuenow={70}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                style={{ width: "0%" }}
-              ></div>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>

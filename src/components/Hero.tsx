@@ -12,11 +12,10 @@ export default function Hero() {
       <Image
   width={500}
   height={500}
-  src="/assets/img/hero-bg.jpg"
+  src="/assets/img/hroo.png"
   alt="Hero Background"
   className="w-full h-full object-cover"
 />
-
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70"></div>
       </div>

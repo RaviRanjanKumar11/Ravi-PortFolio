@@ -1,15 +1,21 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation"; 
 import Link from "next/link";
-import { TbMenuOrder } from "react-icons/tb";
+import { HiMenuAlt3, HiX } from "react-icons/hi"; // More modern icons
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname(); // Get the current route
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  // Change background on scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -20,74 +26,95 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="font-mono bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 shadow-lg sticky top-0 z-50">
-      {/* Desktop Navbar */}
-      <div className="container mx-auto flex justify-between items-center md:py-4 md:px-6 p-1">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled 
+      ? "py-3 bg-gray-950/80 backdrop-blur-md border-b border-white/10 shadow-xl" 
+      : "py-5 bg-transparent"
+    }`}>
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        
         {/* Logo Section */}
-        <h1 className="text-3xl font-extrabold text-white tracking-widest">
-          Ravi <span className="text-yellow-300">Portfolio</span>
-        </h1>
-
-        {/* Navigation Links */}
-        <div className="hidden md:flex space-x-6 text-lg">
-          {navLinks.map((link) => (
-            <Link key={link.path} href={link.path} legacyBehavior>
-              <a
-                className={`transition-colors duration-300 ${
-                  pathname === link.path
-                    ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-                    : "text-white hover:text-yellow-300"
-                }`}
-              >
-                {link.name}
-              </a>
-            </Link>
-          ))}
-        </div>
-
-        {/* Call-to-Action Button */}
-        <Link href="/contact" legacyBehavior>
-          <a className="bg-yellow-300 text-gray-900 font-semibold md:py-2 md:px-4 px-1 rounded-lg shadow-md text-xs hover:bg-yellow-400 transition-transform transform hover:scale-105">
-            Hire Me
-          </a>
+        <Link href="/" className="group flex items-center gap-1">
+          <span className="text-2xl font-black text-white tracking-tighter italic">
+            RAVI<span className="text-yellow-400 group-hover:text-white transition-colors">.</span>
+          </span>
         </Link>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center">
-          <button onClick={toggleMobileMenu} className="text-white">
-            <TbMenuOrder />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Sidebar */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40">
-          <div className="fixed top-0 left-0 h-full w-64 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 p-6 flex flex-col space-y-6">
-            <button onClick={toggleMobileMenu} className="text-white text-3xl self-end">
-              &times;
-            </button>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center bg-gray-900/40 border border-white/5 px-6 py-2 rounded-full backdrop-blur-lg">
+          <ul className="flex space-x-8 text-sm font-medium">
             {navLinks.map((link) => (
-              <Link key={link.path} href={link.path} legacyBehavior>
-                <a
-                  className={`text-xl transition-colors duration-300 ${
-                    pathname === link.path
-                      ? "text-yellow-300 font-bold border-l-4 border-yellow-300 pl-2"
-                      : "text-white hover:text-yellow-300"
+              <li key={link.path}>
+                <Link 
+                  href={link.path}
+                  className={`relative transition-colors duration-300 hover:text-yellow-400 ${
+                    pathname === link.path ? "text-yellow-400" : "text-gray-300"
                   }`}
                 >
                   {link.name}
-                </a>
+                  {pathname === link.path && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400 rounded-full" />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* CTA Button */}
+        <div className="hidden md:block">
+          <Link 
+            href="/contact" 
+            className="px-5 py-2.5 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-full text-sm transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(234,179,8,0.3)]"
+          >
+            Hire Me
+          </Link>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden text-white text-3xl focus:outline-none"
+        >
+          {isMobileMenuOpen ? <HiX /> : <HiMenuAlt3 />}
+        </button>
+      </div>
+
+      {/* Mobile Sidebar (Slide-in Effect) */}
+      <div className={`fixed inset-y-0 right-0 w-full bg-gray-950 z-[60] transform transition-transform duration-500 ease-in-out md:hidden ${
+        isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+      }`}>
+        <div className="flex flex-col h-full p-8">
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="self-end text-white text-4xl mb-12"
+          >
+            <HiX />
+          </button>
+          
+          <div className="flex flex-col space-y-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`text-4xl font-bold tracking-tighter ${
+                  pathname === link.path ? "text-yellow-400" : "text-white"
+                }`}
+              >
+                {link.name}
               </Link>
             ))}
-            <Link href="/contact" legacyBehavior>
-              <a className="bg-yellow-300 text-gray-900 font-semibold px-4 py-2 rounded-lg shadow-md text-xl hover:bg-yellow-400 transition-transform transform hover:scale-105">
-                Hire Me
-              </a>
+            <Link 
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-4 text-2xl font-bold text-yellow-400 underline underline-offset-8"
+            >
+              Get in Touch →
             </Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

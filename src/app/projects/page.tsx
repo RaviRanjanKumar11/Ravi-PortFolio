@@ -6,95 +6,115 @@ import Image from "next/image";
 const ProjectsPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("Hospital");
 
+  const categories = [
+    { id: "Hospital", label: "Hospital Mgmt" },
+    { id: "ApiGroup", label: "API Services" },
+    { id: "ApiUserAdmin", label: "Admin Panels" },
+    { id: "HotelBooking", label: "Hotel Booking" }
+  ];
 
-  // Function to handle button click and filter items
-  const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
-  };
-
-  // Get filtered items based on selected category
   const getFilteredItems = (category: string) => {
     switch (category) {
-      case "Hospital":
-        return HospitalItems;
-      case "ApiGroup":
-        return ApiGroup;
-      case "ApiUserAdmin":
-        return ApiUserAdminItems;
-      case "HotelBooking":
-        return HotelItems;
-      default:
-        return [];
+      case "Hospital": return HospitalItems;
+      case "ApiGroup": return ApiGroup;
+      case "ApiUserAdmin": return ApiUserAdminItems;
+      case "HotelBooking": return HotelItems;
+      default: return [];
     }
   };
 
   return (
-    <section className="bg-gradient-to-r from-indigo-500 font-mono to-purple-600 md:py-6 py-1">
-  <div className="container mx-auto md:px-2 lg:px-8 px-2">
-    {/* Section Header */}
-    <div className="text-center mb-8">
-      <h2 className="text-5xl font-extrabold text-white mb-2 transform transition-all duration-500 hover:scale-105">
-        Projects
-      </h2>
-      <p className="text-gray-200 text-lg max-w-3xl mx-auto">
-        Explore some of our amazing projects. Click on a category to explore more.
-      </p>
-    </div>
+    <section className="bg-slate-900 py-20 font-sans overflow-hidden">
+      <div className="container mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+            Featured <span className="text-indigo-500">Projects</span>
+          </h2>
+          <div className="h-1.5 w-24 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            A showcase of full-stack applications, robust APIs, and interactive user interfaces.
+          </p>
+        </div>
 
-    {/* Filters */}
-    <div className="flex justify-center md:space-x-5 space-x-1 mb-4">
-      {["Hospital", "ApiGroup", "ApiUserAdmin", "HotelBooking"].map((category) => (
-        <button
-          key={category}
-          className={`md:px-6 md:py-3 px-2 py-1 md:text-lg text-sm font-semibold rounded-full transition-all duration-300 transform ${
-            selectedCategory === category
-              ? "bg-blue-600 text-white scale-105"
-              : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-          } shadow-lg hover:scale-110`}
-          onClick={() => handleCategoryClick(category)}
-        >
-          {category}
-        </button>
-      ))}
-    </div>
+        {/* Modern Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-6 py-2.5 rounded-xl font-bold transition-all duration-300 border-2 ${
+                selectedCategory === cat.id
+                  ? "bg-indigo-600 border-indigo-600 text-white shadow-[0_0_20px_rgba(79,70,229,0.4)]"
+                  : "bg-transparent border-slate-700 text-slate-400 hover:border-slate-500 hover:text-white"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
 
-    {/* Items Grid */}
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8" >
-        {getFilteredItems(selectedCategory).map((item,index) => (
-          <div
-         
-            key={item.id || index}
-            className="group relative overflow-hidden h-72 w-full bg-sky-300 rounded-xl shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:scale-105"
-          >
-            <div className="absolute w-56 h-40 bg-gray-50 z-10 top-32 left-4 opacity-50 rounded-2xl blur duration-300 group-hover:blur-none [transform:rotate3d(1_,-1,_1,_30deg)] group-hover:[transform:rotate3d(1_,-1,_1,_0deg)]"></div>
-            <div className="absolute w-56 h-40 z-10 top-32 left-4 p-1 rounded-2xl flex flex-col justify-end items-start gap-2 [transform:rotate3d(1_,-1,_1,_30deg)] group-hover:[transform:rotate3d(1_,-1,_1,_0deg)]">
-              <span className="text-red-800 text-2xl font-extrabold">
-                {item.title}
-              </span>
-              <p className="text-gray-800 font-bold line-clamp-3">
-                {item.description}
-              </p>
-              <button
-                className="bg-gray-50 px-3 py-2 rounded-xl hover:bg-sky-600 text-gray-800 hover:text-white transition-all"
-               
-              >
-                {item.detailsLink}
-              </button>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {getFilteredItems(selectedCategory).map((item, index) => (
+            <div
+              key={item.id || index}
+              className="group relative h-[400px] rounded-3xl overflow-hidden bg-slate-800 border border-slate-700 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/20"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
+            >
+              {/* Project Image */}
+              <div className="absolute inset-0">
+                <Image
+                  fill
+                  src={item.image}
+                  alt={item.title}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+                />
+              </div>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent"></div>
+
+              {/* Content Box */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <div className="transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                  <span className="inline-block px-3 py-1 mb-3 text-xs font-bold uppercase tracking-widest bg-indigo-500/20 text-indigo-400 rounded-lg border border-indigo-500/30">
+                    {selectedCategory}
+                  </span>
+                  <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-300 text-sm mb-6 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {item.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-4">
+                    <button className="flex-1 py-3 bg-white text-slate-900 font-bold rounded-xl hover:bg-indigo-500 hover:text-white transition-colors text-sm shadow-lg">
+                      View Demo
+                    </button>
+                    {/* Github or Details Link icon placeholder */}
+                    <div className="w-11 h-11 flex items-center justify-center bg-slate-700/50 backdrop-blur-md rounded-xl border border-white/10 text-white hover:bg-indigo-600 transition-colors cursor-pointer">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-              <Image
-                          width={500}
-                          height={500}
-              src={item.image}
-              alt={item.title}
-              className="w-full h-72 object-cover group-hover:scale-105 transition-all duration-500"
-            />
+          ))}
+        </div>
+        
+        {/* Empty State check */}
+        {getFilteredItems(selectedCategory).length === 0 && (
+          <div className="text-center py-20 bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-700">
+            <p className="text-slate-500 text-xl font-medium">Coming soon! Exciting new projects under development.</p>
           </div>
-        ))}
+        )}
       </div>
-     
-    </div>
-</section>
-
+    </section>
   );
 };
 

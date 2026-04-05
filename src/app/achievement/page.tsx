@@ -2,12 +2,11 @@
 
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { FaDownload, FaPrint, FaShareAlt, FaHeart } from 'react-icons/fa';
+import { FaDownload, FaPrint, FaShareAlt, FaHeart, FaAward, FaCertificate, FaBriefcase } from 'react-icons/fa';
 
 const Achievements: React.FC = () => {
   const [likes, setLikes] = useState<number>(0);
 
-  // Load likes from localStorage on component mount
   useEffect(() => {
     const storedLikes = localStorage.getItem("resumeLikes");
     if (storedLikes) {
@@ -22,10 +21,10 @@ const Achievements: React.FC = () => {
       printWindow.document.write(`
         <html>
           <head>
-            <title>Resume</title>
+            <title>Resume - Ravi Ranjan Kumar</title>
             <style>
-              body { text-align: center; padding: 20px; }
-              img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); }
+              body { text-align: center; padding: 20px; background: #f4f4f4; }
+              img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0px 10px 30px rgba(0,0,0,0.1); }
             </style>
           </head>
           <body>
@@ -46,91 +45,124 @@ const Achievements: React.FC = () => {
   const handleLike = () => {
     const newLikes = likes + 1;
     setLikes(newLikes);
-    localStorage.setItem("resumeLikes", newLikes.toString()); // Save to localStorage
+    localStorage.setItem("resumeLikes", newLikes.toString());
   };
 
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'My Resume',
-        text: 'Check out my resume!',
+        title: 'Ravi Ranjan Kumar - Resume',
+        text: 'Check out this impressive portfolio and resume!',
         url: window.location.href,
-      })
-      .then(() => console.log('Resume shared successfully'))
-      .catch((error) => console.error('Error sharing:', error));
+      }).catch((error) => console.error('Error sharing:', error));
     } else {
       alert("Sharing not supported on this browser.");
     }
   };
 
-  return (
-    <section className="py-12 bg-gray-50 font-mono" id="achievements">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">Achievements</h2>
+  const certs = [
+    { title: "Oracle SQL Explorer", org: "Oracle", icon: <FaCertificate className="text-blue-500" /> },
+    { title: "Full Stack Development", org: "Naresh IT", icon: <FaAward className="text-yellow-500" /> },
+    { title: "Part Time Mentor (2 yrs)", org: "HIIT", icon: <FaBriefcase className="text-purple-500" /> },
+    { title: "Certified InterviewBit", org: "InterviewBit", icon: <FaCertificate className="text-green-500" /> },
+    { title: "Work Experience As SDE", org: "InfoCartGroup", icon: <FaBriefcase className="text-orange-500" /> },
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="bg-white p-8 rounded-lg shadow-lg"> 
-            <h3 className="text-2xl font-semibold text-gray-700 mb-4">Certifications, Awards & Experience Letters</h3>
-            <ul className="list-disc pl-5 space-y-3 text-gray-600">
-              <li><span className="font-semibold">Oracle SQL Explorer Certification</span> - Oracle</li>
-              <li><span className="font-semibold">Full Stack Naresh IT Certification</span> - NareshIT </li>
-              <li><span className="font-semibold">Part Time Mentor in HIIT 2 years</span> - HIIT</li>
-              <li><span className="font-semibold">Certified InterViewBit</span> - InterViewBit</li>
-              <li><span className="font-semibold">Work Experience As SDE</span> - InfoCartGroup</li>
-            </ul>
+  return (
+    <section className="py-20 bg-slate-50 font-sans overflow-hidden" id="achievements">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="text-center mb-16" data-aos="fade-up">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+            Achievements & <span className="text-blue-600">Resume</span>
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg font-light">
+            A journey of continuous learning, professional certifications, and hands-on industry experience.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column: Certifications Bento Grid */}
+          <div className="lg:col-span-5 space-y-6" data-aos="fade-right">
+            <h3 className="text-2xl font-bold text-slate-800 flex items-center gap-3">
+              Professional Milestones
+            </h3>
+            <div className="grid gap-4">
+              {certs.map((cert, i) => (
+                <div key={i} className="flex items-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                  <div className="p-3 rounded-xl bg-slate-50 group-hover:bg-white group-hover:scale-110 transition-transform">
+                    {cert.icon}
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-bold text-slate-800">{cert.title}</h4>
+                    <p className="text-sm text-slate-500">{cert.org}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Resume Section */}
-          <div className="bg-white p-1 rounded-lg shadow-lg flex flex-col items-center relative">
-            {/* Like Counter */}
-            <div className="absolute top-2 right-2 flex items-center bg-gray-900 text-white px-3 py-1 rounded-full">
-              <FaHeart className="text-red-500 mr-1 animate-pulse" />
-              <span>{likes}</span>
-            </div>
+          {/* Right Column: Interactive Resume Frame */}
+          <div className="lg:col-span-7" data-aos="fade-left">
+            <div className="relative bg-white p-4 rounded-[2rem] shadow-2xl border border-slate-200">
+              
+              {/* Floating Like Counter */}
+              <div className="absolute -top-4 -right-4 z-20 flex items-center bg-slate-900/90 backdrop-blur-md text-white px-4 py-2 rounded-2xl shadow-xl border border-white/20">
+                <FaHeart className="text-red-500 mr-2 animate-pulse" />
+                <span className="font-bold text-lg">{likes}</span>
+              </div>
 
-            <h3 className="text-2xl font-semibold text-gray-700 mb-1">Ravi Ranjan Kumar</h3>
-            <div className="mb-3 relative">
-              <Image
-                width={600}
-                height={500}
-                src="/assets/img/ResumeRavi.png"
-                alt="Resume"
-                className="object-cover rounded-lg shadow-md"
-              />
-            </div>
-            <div className="flex mt-3 gap-1">
-              {/* Like Button */}
-              <button
-                onClick={handleLike}
-                className="flex items-center bg-red-500 text-white px-1 py-0 rounded-lg hover:bg-red-600 transition duration-300"
-              >
-                <FaHeart className="mr-1" /> Like
-              </button>
+              {/* Resume Image Container */}
+              <div className="relative group overflow-hidden rounded-2xl bg-slate-100">
+                <Image
+                  width={800}
+                  height={1000}
+                  src="/assets/img/ResumeRavi.png"
+                  alt="Ravi Ranjan Kumar Resume"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* Overlay on Hover */}
+                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                   <button onClick={handleLike} className="p-4 bg-white text-red-500 rounded-full hover:scale-110 transition shadow-xl">
+                      <FaHeart size={24} />
+                   </button>
+                </div>
+              </div>
 
-              {/* Download Resume Button */}
-              <a
-                href="/assets/img/ResumeRavi.png"
-                download="ResumeRavi.png"
-                className="flex items-center bg-blue-500 text-white px-1 py-0 rounded-lg hover:bg-blue-600 transition duration-300"
-              >
-                <FaDownload className="mr-1" /> Download
-              </a>
+              {/* Action Buttons */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                <button
+                  onClick={handleLike}
+                  className="flex flex-col items-center justify-center py-3 px-2 bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition font-bold text-sm gap-1"
+                >
+                  <FaHeart /> <span>Like</span>
+                </button>
 
-              {/* Print Resume Button */}
-              <button
-                onClick={handlePrint}
-                className="flex items-center bg-green-500 text-white px-1 py-0 rounded-lg hover:bg-green-600 transition duration-300"
-              >
-                <FaPrint className="mr-1" /> Print
-              </button>
+                <a
+                  href="/assets/img/ResumeRavi.png"
+                  download="ResumeRavi.png"
+                  className="flex flex-col items-center justify-center py-3 px-2 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition font-bold text-sm gap-1"
+                >
+                  <FaDownload /> <span>Get PDF</span>
+                </a>
 
-              {/* Share Button */}
-              <button
-                onClick={handleShare}
-                className="flex items-center bg-gray-700 text-white px-1 py-0 rounded-lg hover:bg-gray-800 transition duration-300"
-              >
-                <FaShareAlt className="mr-1" /> Share
-              </button>
+                <button
+                  onClick={handlePrint}
+                  className="flex flex-col items-center justify-center py-3 px-2 bg-green-50 text-green-600 rounded-xl hover:bg-green-100 transition font-bold text-sm gap-1"
+                >
+                  <FaPrint /> <span>Print</span>
+                </button>
+
+                <button
+                  onClick={handleShare}
+                  className="flex flex-col items-center justify-center py-3 px-2 bg-slate-100 text-slate-700 rounded-xl hover:bg-slate-200 transition font-bold text-sm gap-1"
+                >
+                  <FaShareAlt /> <span>Share</span>
+                </button>
+              </div>
             </div>
           </div>
 
